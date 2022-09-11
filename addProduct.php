@@ -1,18 +1,3 @@
-<?php
-if (isset($_POST['save-btn'])) {
-    $sku = $_POST['sku'];
-    $type = $_POST['productType'];
-    $name = $_POST['name'];
-    $price = $_POST['price'];
-    print_r($sku);
-}
-
-
-
-?>
-
-
-
 <!doctype html>
 <html lang="en">
 
@@ -34,14 +19,21 @@ require_once 'header/header.php';
             </div>
             <hr>
         </div>
+        <?php if (isset($_GET['error'])) {
+            echo '<div class="text-center w-25 mx-auto"><div class="alert alert-danger" role="alert">
+            ' . $_GET['error'] . '
+            </div></div>';
+        } else {
+            echo '';
+        } ?>
         <div class="row mx-5 my-5 w-25">
-            <form action="" method="post" id="product_form">
+            <form action="classes/InputController.php" method="post" id="product_form">
                 <div class="row g-3 align-items-center mx-auto mb-2">
                     <div class="col-2">
                         <label for="sku" class="col-form-label">SKU</label>
                     </div>
                     <div class="col-auto">
-                        <input type="text" id="sku" class="form-control" aria-describedby="passwordHelpInline" name="sku">
+                        <input type="text" id="sku" class="form-control" aria-describedby="passwordHelpInline" name="sku" >
                     </div>
                 </div>
                 <div class="row g-3 align-items-center mx-auto mb-2 ">
@@ -66,61 +58,15 @@ require_once 'header/header.php';
                     </div>
                     <div class="col-auto">
                         <select class="form-select" id="productType" name="productType">
-                            <option>Choose...</option>
-                            <option value="1">DVD</option>
-                            <option value="2">Furniture</option>
-                            <option value="3">Book</option>
+                            <option value="0">Choose...</option>
                         </select>
                     </div>
                 </div>
-                <div class="row g-3 align-items-center mx-auto mb-2" id="dvd">
-                    <div class="col-2">
-                        <label for="size" class="col-form-label">Size(MB)</label>
-                    </div>
-                    <div class="col-auto">
-                        <input type="number" id="size" class="form-control" aria-describedby="passwordHelpInline" name="size">
-                    </div>
-                    <h6 class="card-subtitle mb-2 text-muted">Please, provide size</h6>
-                </div>
-                <div class="row" id="furniture">
-                    <div class="row align-items-center mx-auto mb-2">
-                        <div class="col-3">
-                            <label for="height" class="col-form-label">Height(CM)</label>
-                        </div>
-                        <div class="col-auto">
-                            <input type="number" id="height" class="form-control" aria-describedby="passwordHelpInline" name="height">
-                        </div>
-                    </div>
-                    <div class="row align-items-center mx-auto mb-2">
-                        <div class=" col-3">
-                            <label for="width" class="col-form-label">Width(CM)</label>
-                        </div>
-                        <div class="col-auto">
-                            <input type="number" id="width" class="form-control" aria-describedby="passwordHelpInline" name="width">
-                        </div>
-                    </div>
-                    <div class="row align-items-center mx-auto mb-2">
-                        <div class=" col-3">
-                            <label for="length" class="col-form-label">Length(CM)</label>
-                        </div>
-                        <div class="col-auto">
-                            <input type="number" id="length" class="form-control" aria-describedby="passwordHelpInline" name="length">
-                        </div>
-                    </div>
-                    <h6 class="card-subtitle mb-2 text-muted ms-auto">Please, provide dimensions</h6>
-                </div>
-                <div class="row g-3 align-items-center mx-auto mb-2" id="book">
-                    <div class="col-auto">
-                        <label for="weight" class="col-form-label">Weight(KG)</label>
-                    </div>
-                    <div class="col-auto">
-                        <input type="number" id="weight" class="form-control" aria-describedby="passwordHelpInline" name="weight">
-                    </div>
-                    <h6 class="card-subtitle mb-2 text-muted">Please, provide weight</h6>
-                </div>
+                <div class="row g-3 align-items-center mx-auto mb-2" id="dvd"></div>
+                <div class="row" id="furniture"></div>
+                <div class="row g-3 align-items-center mx-auto mb-2" id="book"></div>
             </form>
         </div>
-
     </div>
 
 

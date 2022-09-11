@@ -13,24 +13,15 @@ require_once 'header/header.php';
                 <h1>Product List</h1>
                 <div>
                     <a href="addProduct.php" class="btn btn-primary mx-3">ADD</a>
-                    <button class="btn btn-danger" id="delete-product-btn">MASS DELETE</button>
+                    <button class="btn btn-danger" id="delete-product-btn" form="form-check">MASS DELETE</button>
                 </div>
             </div>
             <hr>
         </div>
-        <div class="row mx-5 my-5">
-            <div class="card" style="width: 16rem;">
-                <input type="checkbox" name="delete-checkbox" class="delete-checkbox mt-2 form-check-input">
-                <div class="card-body text-center">
-                    <h5 class="card-title">JVC200123</h5>
-                    <h6 class="card-subtitle mb-2">Chair</h6>
-                    <p class="card-subtitle mb-2">40$</p>
-                    <p class="card-subtitle">Size: 700MB</p>
-                </div>
-            </div>
-        </div>
+        <form id="form-check" method="POST" action="classes/DeleteController.php">
+            <div class="row mx-5 my-5" id="showProducts"></div>
+        </form>
     </div>
-
 
     <?php require_once 'scripts/scripts.php'; ?>
 </body>
